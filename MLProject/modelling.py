@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
 # Inisialisasi DagsHub (Gunakan variabel environment dari GitHub Secrets)
-dagshub.init(repo_owner='IchiroMitsuki', repo_name='Eksperimen_SML_Maulana-Ihza', mlflow=True)
+dagshub.init(repo_owner='IchiroMitsuki', repo_name='Eksperimen_SML_Maulana-Ihza-Ishlahy', mlflow=True)
 
 def load_data():
     script_dir = os.path.dirname(os.path.abspath(__file__))

@@ -30,6 +30,7 @@ jobs:
           MLFLOW_TRACKING_URI: https://dagshub.com/IchiroMitsuki/Eksperimen_SML_Maulana-Ihza-Ishlahy.mlflow
           MLFLOW_TRACKING_USERNAME: IchiroMitsuki
           MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_PAT }}
+          DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_PAT }}
         run: |
           cd MLProject
           # Diperbarui: Menghapus --no-conda agar sesuai dengan MLflow 2.19.0
