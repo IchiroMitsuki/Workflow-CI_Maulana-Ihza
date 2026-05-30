@@ -11,19 +11,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Diperbarui ke v4 untuk mengatasi warning Node.js
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Diperbarui ke v3 untuk mengatasi warning Miniconda
-      - name: Set up Miniconda
-        uses: conda-incubator/setup-miniconda@v3
+      # Menggunakan setup-python murni untuk memaksa versi 3.12.7
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          auto-update-conda: true
           python-version: "3.12.7"
 
-      - name: Install MLflow & DagsHub
-        run: pip install mlflow==2.19.0 dagshub
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Menginstal semua library yang dibutuhkan script modelling.py
+          pip install mlflow==2.19.0 dagshub pandas scikit-learn
 
       - name: Run MLflow Project
         env:
@@ -33,7 +34,6 @@ jobs:
           DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_PAT }}
         run: |
           cd MLProject
-          # Diperbarui: Menghapus --no-conda agar sesuai dengan MLflow 2.19.0
           mlflow run . --env-manager local
 
       - name: Upload Artifact to GitHub (Skilled Requirement)
