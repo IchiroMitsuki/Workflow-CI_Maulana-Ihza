@@ -19,7 +19,7 @@ def load_data():
 def main():
     X_train, y_train = load_data()
     
-    mlflow.set_experiment("CI_Pipeline_Experiment")
+    # mlflow.set_experiment("CI_Pipeline_Experiment")
     
     with mlflow.start_run():
         model = RandomForestRegressor(n_estimators=50, random_state=42)
