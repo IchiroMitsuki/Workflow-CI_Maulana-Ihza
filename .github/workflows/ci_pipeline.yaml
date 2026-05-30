@@ -48,8 +48,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      # FIX: Ganti --env-manager conda -> local
+      # Alasan: conda.yaml hanya berisi pip packages (tidak ada paket conda-native),
+      # sehingga env-manager local sudah cukup dan menghindari error Anaconda ToS
+      # yang muncul pada conda versi terbaru di environment non-interactive (Docker build).
       - name: Build and Push Docker Image (Advance Requirement)
         run: |
           cd MLProject
-          mlflow models build-docker -m local_model -n ichiromitsuki26/imbalance_price_model:latest --env-manager conda
+          mlflow models build-docker -m local_model -n ichiromitsuki26/imbalance_price_model:latest --env-manager local
           docker push ichiromitsuki26/imbalance_price_model:latest
