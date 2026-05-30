@@ -27,8 +27,8 @@ jobs:
 
       - name: Run MLflow Project
         env:
-          MLFLOW_TRACKING_URI: https://dagshub.com/${{ github.repository_owner }}/Eksperimen_SML_Maulana-Ihza.mlflow
-          MLFLOW_TRACKING_USERNAME: ${{ github.repository_owner }}
+          MLFLOW_TRACKING_URI: https://dagshub.com/IchiroMitsuki/Eksperimen_SML_Maulana-Ihza-Ishlahy.mlflow
+          MLFLOW_TRACKING_USERNAME: IchiroMitsuki
           MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_PAT }}
         run: |
           cd MLProject
