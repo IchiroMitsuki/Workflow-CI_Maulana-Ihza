@@ -51,5 +51,5 @@ jobs:
       - name: Build and Push Docker Image (Advance Requirement)
         run: |
           cd MLProject
-          mlflow models build-docker -m local_model -n ichiromitsuki26/imbalance_price_model:latest
+          mlflow models build-docker -m local_model -n ichiromitsuki26/imbalance_price_model:latest --env-manager conda
           docker push ichiromitsuki26/imbalance_price_model:latest
